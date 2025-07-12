@@ -13,7 +13,7 @@
 
 ## Заполнение `.env` файл
 Пример `.env` файла:
-```json
+```
 APP_NAME=archiving-service                  // имя проекта
 APP_VERSION=1.0.0                           // версия проекта
 APP_MAX_NUM_TASKS=3                         // максимальное количество задач

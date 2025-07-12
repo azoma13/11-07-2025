@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"path"
 	"path/filepath"
@@ -165,7 +166,13 @@ func (s *TaskService) ArchivingFiles(ctx context.Context, task entity.Task) (str
 }
 
 func dowlandFile(input TaskAddFileInput, countFile int) error {
-	fileName := path.Base(input.UrlFile)
+	decodedUrlFile, err := url.QueryUnescape(input.UrlFile)
+	if err != nil {
+		return err
+	}
+	urlFile := strings.Replace(decodedUrlFile, " ", "_", -1)
+
+	fileName := path.Base(urlFile)
 	if idx := strings.Index(fileName, "?"); idx != -1 {
 		fileName = fileName[:idx]
 	}

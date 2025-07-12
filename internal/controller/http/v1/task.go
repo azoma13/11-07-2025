@@ -45,7 +45,7 @@ func (r *taskRoutes) createTask(c echo.Context) error {
 		Id int `json:"task_id"`
 	}
 
-	return c.JSON(http.StatusOK, response{
+	return c.JSON(http.StatusCreated, response{
 		Id: id,
 	})
 }
